@@ -73,7 +73,7 @@ public class ApiService {
             stringBuilder.append("Bu ifade xm=x0+mh biciminde secilen her bir nokta icin duzenlenir.").append("\n");
         }
         if (toPdf) {
-            latexStringBuilder.append("\\subsection{ornek Noktalar}").append("\n");
+            latexStringBuilder.append("\\subsection{Ornek Noktalar}").append("\n");
             latexStringBuilder.append("Bu ifade $x_{m}=x_{0}+mh$ biciminde secilen her bir nokta icin duzenlenir.\\\\").append("\n");
         }
         Texp[] e = fd.polynomial();
@@ -129,7 +129,7 @@ public class ApiService {
                     stringBuilder.append("------").append("\n");
                 }
                 if (toPdf) {
-                    stringBuilder.append((i + 1)).append(". satir kullanilarak  asagisindaki (").append(j + 1).append(",").append(i + 1).append(") elemani 0 yapilir.");
+                    latexStringBuilder.append((i + 1)).append(". satir kullanilarak  asagisindaki (").append(j + 1).append(",").append(i + 1).append(") elemani 0 yapilir.");
                     latexStringBuilder = PutMatrix(latexStringBuilder, e6, true, "|");
                 }
             }
@@ -297,16 +297,16 @@ public class ApiService {
         header += or + "r";
 
         sb.append("\\begin{center}").append("\n");
-        sb.append("$$ \\left[\\begin{array}{"+header+"}").append("\n");
+        sb.append("$$ \\left[\\begin{array}{").append(header).append("}").append("\n");
 
         sb.append("c_{0}");
         for(int i=1;i<ms[0].length-1;i++){
-            sb.append(" & c_{"+i+"}");
+            sb.append(" & c_{").append(i).append("}");
         }
         sb.append("\\\\").append("\n");
 
         for (int i=0; i<ms.length; i++) {
-            PutText(ms[i][0].toLatex(false)+"");
+            sb.append(ms[i][0].toLatex(false)+"");
             for (int j=1; j<ms[i].length; j++) {
                 sb.append(" & ").append(ms[i][j].toLatex(ltx));
             }

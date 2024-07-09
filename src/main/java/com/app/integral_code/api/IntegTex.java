@@ -9,7 +9,7 @@ public class IntegTex {
   
   public static void main(String[] args) {
     //int[] m = {0,1,2,3,4};
-    int[] m = {0,1,2,3,4,5,6,7,8};
+    int[] m = {0,1,2};
   	//int[] m = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
   	//int[] m = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
   	//int[] m = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40};
@@ -41,9 +41,9 @@ public class IntegTex {
   	Tex_Create();
   	
   	if (toText)
-  	  System.out.println("Sayisal Integral icin Polinom Yaklasim Form�lleri");
+  	  System.out.println("Sayisal Integral icin Polinom Yaklasim Formulleri");
   	if (toPdf)
-	  PutTextLn("\\section{Say�sal �ntegral i�in Polinom Yakla��m Form�lleri}");
+	  PutTextLn("\\section{Sayisal integral icin Polinom Yaklasim Formulleri}");
 	
 	//System.out.println("---1---");
 	if (toText) {
@@ -52,8 +52,8 @@ public class IntegTex {
 	  System.out.println("Pn(x) = c0+c1*x+c2*x^2+c3*x^3+...+cn*x^n");
 	}
 	if (toPdf) {
-	  PutTextLn("\\subsection{Polinom �fadesi}");
-	  PutTextLn("Bir $P_{n}(x)$ polinomu genel olarak a�a��daki ifade ile temsil edilir.\\\\");
+	  PutTextLn("\\subsection{Polinom ifadesi}");
+	  PutTextLn("Bir $P_{n}(x)$ polinomu genel olarak asagidaki ifade ile temsil edilir.\\\\");
 	  PutTextLn("$\\displaystyle P_{n}(x)= c_{0}+c_{1}x+c_{2}x^{2}+c_{3}x^{3}+\\cdot\\cdot\\cdot+c_{n}x^{n}$");
 	}
 	
@@ -63,8 +63,8 @@ public class IntegTex {
 	  System.out.println("Bu ifade xm=x0+mh biciminde secilen her bir nokta icin duzenlenir.");
 	}
 	if (toPdf) {
-	  PutTextLn("\\subsection{�rnek Noktalar}");
-	  PutTextLn("Bu ifade $x_{m}=x_{0}+mh$ bi�iminde se�ilen her bir nokta i�in d�zenlenir.\\\\");
+	  PutTextLn("\\subsection{Ornek Noktalar}");
+	  PutTextLn("Bu ifade $x_{m}=x_{0}+mh$ biciminde secilen her bir nokta icin duzenlenir.\\\\");
 	}
     Texp[] e = fd.polynomial();
     for (int i=0; i<e.length; i++) {
@@ -79,11 +79,11 @@ public class IntegTex {
 	System.out.println("Class: " + e[2].toClass());
 	if (toText) {
 	  System.out.println("Denklem Sistemi");
-	  System.out.println("Bu denklemlerden katsay� matrisi olusturulur (h, h^{2} gibi terimler daha sonra ��z�me eklenecektir).");
+	  System.out.println("Bu denklemlerden katsayi matrisi olusturulur (h, h^{2} gibi terimler daha sonra cozume eklenecektir).");
 	}
 	if (toPdf) {
 	  PutTextLn("\\subsection{Denklem Sistemi}");
-	  PutTextLn("Bu denklemlerden katsay� matrisi olu�turulur.");
+	  PutTextLn("Bu denklemlerden katsayi matrisi olusturulur.");
 	}
 	Exp[][] e5 = fd.coeffMatrix(e); //(2)
 	if (toText)
@@ -94,9 +94,9 @@ public class IntegTex {
     
     //System.out.println("---7---");
     if (toText)
-      System.out.println("Denklemler, uslu ifadeler hesaplanarak a�agidaki gibi yeniden duzenlenir.");
+      System.out.println("Denklemler, uslu ifadeler hesaplanarak asagidaki gibi yeniden duzenlenir.");
     if (toPdf)
-	  PutTextLn("Denklemler, �sl� ifadeler hesaplanarak a�a��daki gibi yeniden d�zenlenir.");
+	  PutTextLn("Denklemler, uslu ifadeler hesaplanarak asagidaki gibi yeniden duzenlenir.");
     Exp[][] e6 = fd.integMatrix(e5);      //(3)
     //Exp[][] e6 = fd.integMatrix(e5, d); //(4)
     if (toText)
@@ -109,17 +109,17 @@ public class IntegTex {
     if (toText)
       System.out.println("Denklem Cozumu");
     if (toPdf)
-      PutTextLn("\\subsection{Denklem ��z�m�}");
+      PutTextLn("\\subsection{Denklem cozumu}");
     for (int i=0; i<e6.length-1; i++) {
       for (int j=i+1; j<e6.length; j++) {
         e6 = fd.gaussMatrix(e6, i, j);
         if (toText) {
-          System.out.println((i+1)+". sat�r kullan�larak  a�a��s�ndaki ("+(j+1)+","+(i+1)+") elemani 0 yap�l�r.");
+          System.out.println((i+1)+". satir kullanilarak  asagisindaki ("+(j+1)+","+(i+1)+") elemani 0 yapilir.");
           System.out.println(fd.showMatrix(e6));
           System.out.println("------");
         }
         if (toPdf) {
-          PutText((i+1)+". sat�r kullan�larak  a�a��s�ndaki ("+(j+1)+","+(i+1)+") eleman� 0 yap�l�r.");
+          PutText((i+1)+". satir kullanilarak  asagisindaki ("+(j+1)+","+(i+1)+") elemani 0 yapilir.");
           PutMatrix(e6, true, "|");
         }
       }
@@ -130,12 +130,12 @@ public class IntegTex {
       for (int j=i-1; j>=0; j--) {
         e6 = fd.gaussMatrix(e6, i, j);
         if (toText) {
-          System.out.println((i+1)+". sat�r kullan�larak  yukar�s�ndaki ("+(j+1)+","+(i+1)+") elemani 0 yap�l�r.");
+          System.out.println((i+1)+". satir kullanilarak  yukarisindaki ("+(j+1)+","+(i+1)+") elemani 0 yapilir.");
           System.out.println(fd.showMatrix(e6));
           System.out.println("------");
         }
         if (toPdf) {
-          PutText((i+1)+". sat�r kullan�larak  yukar�s�ndaki ("+(j+1)+","+(i+1)+") eleman� 0 yap�l�r.");
+          PutText((i+1)+". satir kullanilarak  yukarisindaki ("+(j+1)+","+(i+1)+") elemani 0 yapilir.");
           PutMatrix(e6, true, "|");
         }
       }
@@ -144,18 +144,18 @@ public class IntegTex {
     //Birim matrise donustur
     e6 = fd.identityMatrix(e6);
     if (toText) {
-      System.out.println("Birim matrise d�n���m yap�l�r.");
+      System.out.println("Birim matrise donusum yapilir.");
       System.out.println(fd.showMatrix(e6));
       System.out.println("------");      
     }
     if (toPdf) {
-      PutTextLn("Katsay� matrisi birim matrise d�n��t�r�l�r.");
+      PutTextLn("Katsayi matrisi birim matrise donusturulur.");
       PutMatrix(e6, true, "|");
     }
     
     //Katsay� ifadeleri
     //System.out.println("---9---");
-	PutTextLn("Buradan katsay� ��z�mleri a�a��daki gibi belirlenir.\\\\");
+	PutTextLn("Buradan katsayi cozumleri asagidaki gibi belirlenir.\\\\");
     for (int i=0; i<e6.length; i++) {
       if (toText)
         System.out.println(fd.showMatrix(e6));
@@ -169,8 +169,8 @@ public class IntegTex {
     
     //Polinom integrali
     //System.out.println("---10---");
-    PutTextLn("\\subsection{Alan Hesab�}");
-    PutTextLn("$P_{"+(e.length-1)+"}(x)$ polinomunun integrali al�n�r.\\\\");
+    PutTextLn("\\subsection{Alan Hesabi}");
+    PutTextLn("$P_{"+(e.length-1)+"}(x)$ polinomunun integrali alinir.\\\\");
     
     String str = "c_{0}";
     String str2 = "c_{0}x";
@@ -188,7 +188,7 @@ public class IntegTex {
     PutTextLn("\\[ I=\\int_{0}^{"+(e.length-1)+"h} ("+str+") \\,dx \\]");
     PutTextLn("\\[ I=("+str2+")\\bigg\\vert_{0}^{"+(e.length-1)+"h} \\]");
     
-    PutTextLn("Burada $x$ yerine $"+(e.length-1)+"h$ yerle�tirildi�inde polinom ifadesinde bulunan $c_{k}*x^{k}$ terimlerinin tamam� h ortak parantezine al�nabilmektedir.\\\\");
+    PutTextLn("Burada $x$ yerine $"+(e.length-1)+"h$ yerlestirildiginde polinom ifadesinde bulunan $c_{k}*x^{k}$ terimlerinin tamami h ortak parantezine alinabilmektedir.\\\\");
     
     Table tb = new Table();
     tb.put("x", new Id((e.length-1)+"h"));
@@ -222,7 +222,7 @@ public class IntegTex {
       }
     }
     
-    PutTextLn("h ve y de�erleri ile integral hesaplan�r.\\\\");
+    PutTextLn("h ve y degerleri ile integral hesaplanir.\\\\");
     
     Texp pe4 = new Texp(new Id("I"), new Times(pe3.getE2().getE1(), pe3.getE2().getE2()).insert(table));
     System.out.println("pe4: " + pe4.toClass());
