@@ -173,7 +173,7 @@ public class ApiService {
                 String str = e6[i][e6.length].toLatex(true);
                 if (i>0)
                     str = "\\frac{1}{h"+(i>1?"^{"+i+"}":"")+"}("+str+")";
-                stringBuilder.append("$\\displaystyle c_{").append(i).append("}=").append(str).append("$\\\\").append("\n");
+                latexStringBuilder.append("$\\displaystyle c_{").append(i).append("}=").append(str).append("$\\\\").append("\n");
             }
         }
 
