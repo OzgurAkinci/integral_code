@@ -9,9 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseDTO {
-    private StringBuilder textFormat;
-    private StringBuilder latexFormat;
-    private byte[] pdfFile;
-    private String pdfFilePath;
+public class DownloadFileRequestDTO {
+    private String filePath;
 }

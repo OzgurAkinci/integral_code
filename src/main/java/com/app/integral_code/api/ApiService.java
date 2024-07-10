@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 
 @Service
 public class ApiService {
@@ -39,7 +40,7 @@ public class ApiService {
         Tex_Close();
 
         if (toPdf) {
-            Tex_pdf();
+            resp = Tex_pdf(resp);
         }
 
         return resp;
@@ -241,7 +242,7 @@ public class ApiService {
         Texp pe5 = new Texp(new Id("I"), new Ratio(pe4.getE2().eval(table).getDecimal()));
         latexStringBuilder.append("$\\displaystyle ").append(pe5.toLatex(true)).append("$\\\\\\\\").append("\n");
 
-        return new ResponseDTO(stringBuilder, latexStringBuilder);
+        return new ResponseDTO(stringBuilder, latexStringBuilder, null, null);
     }
 
     public void Tex_Create() {
@@ -318,7 +319,7 @@ public class ApiService {
         return sb;
     }
 
-    public void Tex_pdf() {
+    public ResponseDTO Tex_pdf(ResponseDTO responseDTO) {
         try {
             ProcessBuilder builder = new ProcessBuilder("pdflateX", latexFile+".tex");
             builder.redirectErrorStream(true);
@@ -335,9 +336,13 @@ public class ApiService {
         }
 
         try {
-            if ((new File(latexFile+".pdf")).exists()) {
-                Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+latexFile+".pdf");
-                p.waitFor();
+            var file = new File(latexFile+".pdf");
+            if (file.exists()) {
+                //Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+latexFile+".pdf");
+                //p.waitFor();
+                responseDTO.setPdfFile(Files.readAllBytes(file.toPath()));
+                responseDTO.setPdfFilePath(file.getAbsolutePath());
+                return responseDTO;
             }
             else {
                 System.out.println("File does not exists: "+latexFile+".pdf");
@@ -345,5 +350,6 @@ public class ApiService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return null;
     }
 }
