@@ -1,8 +1,10 @@
 $(document).ready(function() {
+    $(".spinner").hide();
     $(".results").hide();
     $('.errorDiv').hide();
     $("#btn").click(function(event) {
         event.preventDefault();
+        $(".spinner").show();
         let vd1 = document.getElementById("v");
         let vd2 = document.getElementById("toTextValue");
         let vd3 = document.getElementById("toPdfValue");
@@ -27,6 +29,7 @@ $(document).ready(function() {
                 $('#textArea').html(data.textFormat);
                 $('#latexArea').html(data.latexFormat);
                 $(".errorDiv").hide();
+                $(".spinner").hide();
             },
             error: function(e) {
                 $('#textArea').html("");
@@ -34,6 +37,7 @@ $(document).ready(function() {
                 $('.results').hide();
                 $('.errorDiv').html(JSON.parse(e.responseText).message);
                 $(".errorDiv").show();
+                $(".spinner").hide();
             }
         });
     });
