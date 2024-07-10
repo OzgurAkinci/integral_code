@@ -19,6 +19,7 @@ public class ApiService {
         for (int i = 0; i < requestDTO.getN(); i++) {
             m[i] = i;
         }
+
         Table table = new Table();
         double h = Math.PI/20;
         double y0 = Math.PI/5;

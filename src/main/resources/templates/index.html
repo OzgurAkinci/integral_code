@@ -30,109 +30,125 @@
                     </div>
                 </div>
             </nav>
-
-            <section class="py-5" id="features1">
-                <div class="container px-5 my-5">
-                    <form class="card card-sm">
-                        <div class="card-body row no-gutters align-items-center">
-                            <div class="col-auto">
-                                <i class="fas fa-search h4 text-body"></i>
-                            </div>
-                            <!--end of col-->
-                            <div class="col">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" disabled type="checkbox" id="toTextValue" checked>
-                                    <label class="form-check-label" for="toTextValue">To Text</label>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <section class="py-5" id="features1">
+                            <form class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <!--end of col-->
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6 form-check form-check d-flex justify-content-center">
+                                                <input class="form-check-input" disabled type="checkbox" id="toTextValue" checked>
+                                                <label class="form-check-label" for="toTextValue">To Text</label>
+                                            </div>
+                                            <div class="col-6 form-check form-check d-flex justify-content-center">
+                                                <input class="form-check-input" type="checkbox" id="toPdfValue" checked>
+                                                <label class="form-check-label" for="toPdfValue">To Pdf</label>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="formArea">
+                                            <div class="form-input mt-3">
+                                                <label class="form-check-label" for="nValue">N Değeri</label>
+                                                <input onchange="appendArea()" class="form-control form-control-lg form-control-borderless" id="nValue"
+                                                       value="3" type="number" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col-12 pt-5">
+                                        <div class="row ">
+                                            <button id="btn" class="btn btn-lg btn-search btn-primary d-block" type="submit">
+                                                Calculate
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--end of col-->
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="toPdfValue" checked>
-                                    <label class="form-check-label" for="toPdfValue">To Pdf</label>
-                                </div>
-                                <input class="form-control form-control-lg form-control-borderless" id="v"
-                                       value="3" type="search" placeholder="">
-                            </div>
-                            <!--end of col-->
-                            <div class="col-auto">
-                                <button id="btn" class="btn btn-lg btn-search" type="submit">
-                                    Calculate
-                                </button>
-                            </div>
-                            <!--end of col-->
-                        </div>
-                    </form>
-                </div>
-            </section>
+                            </form>
+                        </section>
+                    </div>
 
-            <section class="py-5" id="features2">
-                <!-- RESULT -->
-                <div class="container px-5">
-                    <div class="errorDiv text-center alert alert-danger"></div>
-                    <div class="text-center"><div class="spinner spinner-border"></div></div>
-                    <div class="row results">
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="tab1" data-bs-toggle="tab" data-bs-target="#t1" type="button" role="tab" aria-controls="t1" aria-selected="true">Text</button>
-                                <button class="nav-link" id="tab2" data-bs-toggle="tab" data-bs-target="#t2" type="button" role="tab" aria-controls="t2" aria-selected="false">LateX</button>
+
+                    <div class="col-md-8">
+                        <section class="py-5" id="features2">
+                            <!-- RESULT -->
+                            <div class="container px-5">
+                                <p>Fill in the fields in the filter section and evaluate the calculation results. According to the determined N value, y fields will be created dynamically.</p>
+                                <div class="errorDiv text-center alert alert-danger"></div>
+                                <div class="text-center"><div class="spinner spinner-border"></div></div>
+                                <div class="row results">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <button class="nav-link active" id="tab1" data-bs-toggle="tab" data-bs-target="#t1" type="button" role="tab" aria-controls="t1" aria-selected="true">Text</button>
+                                            <button class="nav-link" id="tab2" data-bs-toggle="tab" data-bs-target="#t2" type="button" role="tab" aria-controls="t2" aria-selected="false">LateX</button>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="t1" role="tabpanel" aria-labelledby="tab1">
+                                            <div class="card-columns overflow-scroll" style="max-height: 500px">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Text</h5>
+                                                        <pre id="textArea"></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="t2" role="tabpanel" aria-labelledby="tab2">
+                                            <div class="card-columns overflow-scroll" style="max-height: 500px">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">LateX</h5>
+                                                        <pre id="latexArea"></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="t1" role="tabpanel" aria-labelledby="tab1">
-                                <div class="card-columns overflow-scroll" style="max-height: 400px">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Text</h5>
-                                            <pre id="textArea"></pre>
+                        </section>
+
+                        <section class="py-5" id="features3">
+                            <div class="container px-5">
+                                <div class="row gx-5">
+                                    <div class="col-lg-12">
+                                        <div class="row gx-5 row-cols-1 row-cols-md-2">
+                                            <div class="col mb-5 h-100">
+                                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                                                <h2 class="h5">Determine the coefficient</h2>
+                                                <p class="mb-0">A polynomial will be created with the coefficient you specify.</p>
+                                            </div>
+                                            <div class="col mb-5 h-100">
+                                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                                                <h2 class="h5">Choose output format</h2>
+                                                <p class="mb-0">You will see results depending on the output format you choose.</p>
+                                            </div>
+                                            <div class="col mb-5 mb-md-0 h-100">
+                                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                                                <h2 class="h5">Check out the results</h2>
+                                                <p class="mb-0">You can review the results step by step.</p>
+                                            </div>
+                                            <div class="col h-100">
+                                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                                                <h2 class="h5">Learn</h2>
+                                                <p class="mb-0">Thus, learn about generating numerical integration expressions with polynomial-based approaches.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="t2" role="tabpanel" aria-labelledby="tab2">
-                                <div class="card-columns overflow-scroll" style="max-height: 400px">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">LateX</h5>
-                                            <pre id="latexArea"></pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        </section>
                     </div>
                 </div>
-            </section>
+            </div>
+
 
             <!-- Features section-->
-            <section class="py-5" id="features3">
-                <div class="container px-5">
-                    <div class="row gx-5">
-                        <div class="col-lg-12">
-                            <div class="row gx-5 row-cols-1 row-cols-md-2">
-                                <div class="col mb-5 h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                    <h2 class="h5">Determine the coefficient</h2>
-                                    <p class="mb-0">A polynomial will be created with the coefficient you specify.</p>
-                                </div>
-                                <div class="col mb-5 h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                    <h2 class="h5">Choose output format</h2>
-                                    <p class="mb-0">You will see results depending on the output format you choose.</p>
-                                </div>
-                                <div class="col mb-5 mb-md-0 h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Check out the results</h2>
-                                    <p class="mb-0">You can review the results step by step.</p>
-                                </div>
-                                <div class="col h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Learn</h2>
-                                    <p class="mb-0">Thus, learn about generating numerical integration expressions with polynomial-based approaches.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
             <!-- Testimonial section-->
             <div class="py-5 bg-light">
                 <div class="container px-5 my-5">

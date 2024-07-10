@@ -14,10 +14,10 @@ public class ApiController {
 
     @RequestMapping(value = {"/","/index"})
     public ModelAndView api(ModelAndView mv) {
-        RequestDTO req = new RequestDTO(3, true, false);
-        var response = apiService.run(req);
-        mv.addObject("textFormat", response.getTextFormat());
-        mv.addObject("latexFormat", response.getLatexFormat());
+        //RequestDTO req = new RequestDTO(3, true, false);
+        //var response = apiService.run(req);
+        //mv.addObject("textFormat", response.getTextFormat());
+        //mv.addObject("latexFormat", response.getLatexFormat());
         mv.setViewName("index");
         return mv;
     }

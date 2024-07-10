@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class RequestDTO {
     private Integer n;
+    private double[] yvalues;
     private boolean toText;
     private boolean toPdf;
 }
