@@ -15,17 +15,26 @@ public class ApiService {
     public static String latexFile = "PInteg";
 
     public ResponseDTO run (RequestDTO requestDTO) {
-        int[] m = new int[requestDTO.getN()];
-        for (int i = 0; i < requestDTO.getN(); i++) {
-            m[i] = i;
+
+        String mTxt = requestDTO.getN();
+        String[] strArr = mTxt.split(",");
+        int[] m = new int[strArr.length];
+        for(int i=0; i<strArr.length; i++) {
+            m[i] = Integer.parseInt(strArr[i]);
         }
 
         Table table = new Table();
-        double h = Math.PI/20;
-        double y0 = Math.PI/5;
+        double h = requestDTO.getH();
+        //int h = 1;
+        //double h = Math.PI/20;
+        //double y0 = Math.PI/5;
         table.put("h", new Ratio(h));
-        for (int i=0; i<m.length; i++) {
-            table.put("y"+i, new Ratio(Math.sin(y0+i*h)));
+        //0.58778525229
+        //0.70710678118
+        //0.80901699436
+        var yDoubleVals = requestDTO.getYvalues();
+        for (int i=0; i<yDoubleVals.length; i++) {
+            table.put("y"+i, new Ratio(yDoubleVals[i]));
         }
 
         StringBuilder stringBuilder = new StringBuilder();

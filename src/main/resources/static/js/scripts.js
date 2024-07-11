@@ -8,6 +8,8 @@ $(document).ready(function() {
         event.preventDefault();
         $(".spinner").show();
         let nValue = document.getElementById("nValue");
+        let hValue = document.getElementById("hValue");
+        let fValue = document.getElementById("fValue");
         let toTextValue = document.getElementById("toTextValue");
         let toPdfValue = document.getElementById("toPdfValue");
         const yValueElements = document.getElementsByClassName("dynamicInput");
@@ -18,6 +20,8 @@ $(document).ready(function() {
 
         let formDataV = {
             'n': nValue.value,
+            'h': hValue.value,
+            'f': fValue.value,
             'yvalues': yValues,
             'toText': toTextValue.checked,
             'toPdf': toPdfValue.checked
@@ -82,7 +86,7 @@ function downloadPdfFile(filePath) {
 }
 
 function appendArea() {
-    let nValue = document.getElementById("nValue");
+    let nValue = document.getElementById("fValue");
     removeElementsByClass("dynamicInputDiv");
     if(nValue && nValue.value) {
         for(let i=0; i<nValue.value; i++) {
