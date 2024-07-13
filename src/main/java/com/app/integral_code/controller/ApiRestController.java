@@ -27,7 +27,7 @@ public class ApiRestController {
 
     @PostMapping("/api/run")
     public ResponseEntity<?> run(@RequestBody RequestDTO requestDTO) {
-        RequestDTO req = new RequestDTO(requestDTO.getN(), requestDTO.getH(), requestDTO.getF(), requestDTO.getYvalues(), requestDTO.isToText(), requestDTO.isToPdf());
+        RequestDTO req = new RequestDTO(requestDTO.getN(), requestDTO.getH(), requestDTO.getYvalues(), requestDTO.isToText(), requestDTO.isToPdf());
         ResponseDTO resp = apiService.run(req);
         return ResponseEntity.ok(resp);
     }

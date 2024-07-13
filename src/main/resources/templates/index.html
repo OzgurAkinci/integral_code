@@ -61,10 +61,16 @@
                                                        value="0,1,2" type="text" placeholder="">
                                             </div>
 
-                                            <div class="form-input mt-3">
-                                                <label class="form-check-label" for="fValue">Fonksiyon Değer Sayısı</label>
-                                                <input onchange="appendArea()" class="form-control form-control-lg form-control-borderless" id="fValue"
-                                                       value="3" type="number" placeholder="">
+                                            <div class="input-group mt-3">
+                                                <input id="fValues" type="number" class="form-control" aria-label="Add an item">
+                                                <div class="input-group-append">
+                                                    <button onclick="appendData()" class="btn btn-outline-primary" id="enter" type="button">Add</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <ul id="yDataList" class="list-group">
+                                                </ul>
                                             </div>
                                         </div>
 

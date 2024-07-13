@@ -1,5 +1,13 @@
+let elements = [];
+
 $(document).ready(function() {
-    appendArea();
+    elements = [
+        {value: 0.58778525229},
+        {value: 0.70710678118},
+        {value: 0.80901699436}
+    ];
+
+    loadData();
 
     $(".spinner").hide();
     $(".results").hide();
@@ -9,19 +17,16 @@ $(document).ready(function() {
         $(".spinner").show();
         let nValue = document.getElementById("nValue");
         let hValue = document.getElementById("hValue");
-        let fValue = document.getElementById("fValue");
         let toTextValue = document.getElementById("toTextValue");
         let toPdfValue = document.getElementById("toPdfValue");
-        const yValueElements = document.getElementsByClassName("dynamicInput");
         const yValues = [];
-        for(let i=0; i<yValueElements.length; i++) {
-            yValues.push(yValueElements.item(i).value)
+        for(let i=0; i<elements.length; i++) {
+            yValues.push(elements[i].value)
         }
 
         let formDataV = {
             'n': nValue.value,
             'h': hValue.value,
-            'f': fValue.value,
             'yvalues': yValues,
             'toText': toTextValue.checked,
             'toPdf': toPdfValue.checked
@@ -85,31 +90,30 @@ function downloadPdfFile(filePath) {
     });
 }
 
-function appendArea() {
-    let nValue = document.getElementById("fValue");
-    removeElementsByClass("dynamicInputDiv");
-    if(nValue && nValue.value) {
-        for(let i=0; i<nValue.value; i++) {
-            const div = document.createElement("div");
-            div.className = "dynamicInputDiv form-input";
+function appendData() {
+    let input = document.getElementById("fValues");
+    elements.push({value: input.value}); input.value = ""; loadData();
+}
 
-            let inputId = "inputId-" + i;
-            const input = document.createElement("input");
-            input.type = "number";
-            input.id = inputId;
-            input.className = "dynamicInput form-control form-control-lg form-control-borderless";
+function loadData() {
+    removeElementsByClass("yDataItem");
+    let ul = document.getElementById("yDataList");
+    for(let i=0; i<elements.length; i++) {
+        let li = document.createElement("li");
+        li.id = "yDataItem-"+i;
+        li.className = "list-group-item d-flex justify-content-between align-items-start yDataItem";
+        li.appendChild(document.createTextNode("y"+i + " - " + elements[i].value));
 
-            const label = document.createElement("label");
-            label.for = inputId;
-            label.textContent = "y"+i;
-            label.className = "form-check-label";
-
-            div.appendChild(label);
-            div.appendChild(input);
-
-            const parent = document.getElementById("formArea");
-            parent.appendChild(div);
-        }
+        let a  = document.createElement("a");
+        a.className = "badge bg-primary rounded-pill text-decoration-none";
+        a.role= "button";
+        a.textContent = "X";
+        a.onclick = function () {
+            elements.splice(i ,1);
+            loadData();
+        };
+        li.appendChild(a);
+        ul.appendChild(li);
     }
 }
 

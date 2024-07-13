@@ -12,7 +12,6 @@ import lombok.Setter;
 public class RequestDTO {
     private String n;
     private double h;
-    private int f;
     private double[] yvalues;
     private boolean toText;
     private boolean toPdf;
