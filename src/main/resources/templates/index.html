@@ -56,15 +56,15 @@
                                             </div>
 
                                             <div class="form-input mt-3">
-                                                <label class="form-check-label" for="nValue">Noktalar</label>
+                                                <label class="form-check-label" for="nValue">Noktalar (Ör: x0, x1, x2)</label>
                                                 <input class="form-control form-control-lg form-control-borderless" id="nValue"
                                                        value="0,1,2" type="text" placeholder="">
                                             </div>
 
                                             <div class="input-group mt-3">
-                                                <input id="fValues" type="number" class="form-control" aria-label="Add an item">
+                                                <input id="fValues" type="number" placeholder="Y değerleri" class="form-control" aria-label="Add an item">
                                                 <div class="input-group-append">
-                                                    <button onclick="appendData()" class="btn btn-outline-primary" id="enter" type="button">Add</button>
+                                                    <button onclick="appendData()" class="btn btn-outline-primary" id="enter" type="button">Ekle</button>
                                                 </div>
                                             </div>
 
@@ -80,7 +80,7 @@
                                     <div class="col-12 pt-5">
                                         <div class="row ">
                                             <button id="btn" class="btn btn-lg btn-search btn-primary d-block" type="submit">
-                                                Calculate
+                                                Hesapla
                                             </button>
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@
                         <section class="py-5" id="features2">
                             <!-- RESULT -->
                             <div class="container px-5">
-                                <p>You can easily calculate the integration steps using polynomial approximation formulas for numerical integration.</p>
+                                <p>Sayısal integrasyon için polinom yaklaşım formüllerini kullanarak integrasyon adımlarını kolayca hesaplayabilirsiniz.</p>
                                 <div class="errorDiv text-center alert alert-danger"></div>
                                 <div class="text-center"><div class="spinner spinner-border"></div></div>
                                 <div class="row results">
@@ -139,23 +139,23 @@
                                         <div class="row gx-5 row-cols-1 row-cols-md-2">
                                             <div class="col mb-5 h-100">
                                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                                <h2 class="h5">Choose output format</h2>
-                                                <p class="mb-0">You will see results depending on the output format you choose.</p>
+                                                <h2 class="h5">Çıktı formatını seç</h2>
+                                                <p class="mb-0">Seçtiğiniz çıktı biçimine bağlı olarak sonuçlar göreceksin.</p>
                                             </div>
                                             <div class="col mb-5 h-100">
                                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                                <h2 class="h5">Set step size value</h2>
-                                                <p class="mb-0">You must define the step value to be used for each interval.</p>
+                                                <h2 class="h5">Adım boyutu değerini ayarla</h2>
+                                                <p class="mb-0">Her aralık için kullanılacak adım değerini tanımlamalısın.</p>
                                             </div>
                                             <div class="col mb-5 mb-md-0 h-100">
                                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                                <h2 class="h5">Point definitions</h2>
-                                                <p class="mb-0">Define the m values to be used in the trapezoidal rule.</p>
+                                                <h2 class="h5">Noktaları tanımla</h2>
+                                                <p class="mb-0">Kullanılacak nokta tanımlamalarını yapmalısın.</p>
                                             </div>
                                             <div class="col h-100">
                                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                                <h2 class="h5">Calculate</h2>
-                                                <p class="mb-0">You must determine y values according to the function to be used.</p>
+                                                <h2 class="h5">Y değerlerini belirle</h2>
+                                                <p class="mb-0">Kullanılacak y değerlerini belirlemelisin</p>
                                             </div>
                                         </div>
                                     </div>
